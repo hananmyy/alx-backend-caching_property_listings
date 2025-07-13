@@ -5,7 +5,7 @@ from properties.models import Property
 
 
 
-def getallproperties():
+def get_all_properties():
     all_properties = cache.get('all_properties')
     if all_properties is None:
         all_properties = list(Property.objects.all())
