@@ -4,11 +4,12 @@ from django.core.cache import cache
 from properties.models import Property
 
 
-def get_all_properties():
+
+def getallproperties():
     all_properties = cache.get('all_properties')
     if all_properties is None:
-        all_properties = list(Property.objects.values('title', 'description', 'price', 'location', 'created_at'))
-        cache.set('all_properties', all_properties, 3600)
+        all_properties = list(Property.objects.values('title', 'description', 'price', 'location', 'created_at'))  # ✅ includes queryset
+        cache.set('all_properties', all_properties, 3600)  # cache for 1 hour
     return all_properties
 
 
