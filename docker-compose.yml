@@ -18,8 +18,16 @@ services:
       POSTGRES_PASSWORD: propertypass
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # persists db data
 
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
+    volumes:
+      - redis_data:/data  # persists redis data
+
+volumes:
+  postgres_data:
+  redis_data:
